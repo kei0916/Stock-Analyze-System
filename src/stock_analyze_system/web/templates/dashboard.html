@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}ダッシュボード — Stock Analyze System{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>ダッシュボード</h1>
+        <div class="page-header__meta">
+            {% if last_sync_at %}
+            最終同期 · {{ last_sync_at.strftime("%Y-%m-%d %H:%M") }} UTC · {{ company_count }}銘柄
+            {% else %}
+            登録 {{ company_count }}銘柄 · 同期未実行
+            {% endif %}
+        </div>
+    </div>
+    <div class="page-header__actions">
+        <form method="post" action="/jobs/daily" style="margin: 0;">
+            <button class="btn" type="submit">{{ icon("refresh", 14) }} 日次更新</button>
+        </form>
+        <a class="btn btn--primary" href="/stocks/search">{{ icon("plus", 14) }} 銘柄を追加</a>
+    </div>
+</div>
+
+<div class="kpi-grid kpi-grid--4">
+    <div class="kpi-tile">
+        <span class="kpi-tile__label">登録銘柄</span>
+        <div class="kpi-tile__value">{{ company_count }}</div>
+        <div class="kpi-tile__delta">合計 (US + JP)</div>
+    </div>
+    <div class="kpi-tile">
+        <span class="kpi-tile__label">ウォッチ中</span>
+        <div class="kpi-tile__value">{{ watchlist_items_total }}</div>
+        <div class="kpi-tile__delta">{{ watchlist_count }}リスト</div>
+    </div>
+    <div class="kpi-tile">
+        <span class="kpi-tile__label">分析ターゲット</span>
+        <div class="kpi-tile__value">{{ target_count }}</div>
+        <div class="kpi-tile__delta">プロモート済み</div>
+    </div>
+    <div class="kpi-tile">
+        <span class="kpi-tile__label">LLM分析 (extractor)</span>
+        <div class="kpi-tile__value">{{ analysis_count }}</div>
+        <div class="kpi-tile__delta">
+            extractor pipeline レコード{% if legacy_analysis_count %} (legacy {{ legacy_analysis_count }}件除外){% endif %}
+        </div>
+    </div>
+</div>
+
+<section class="panel" style="margin-top: var(--space-5);">
+    <header class="panel__header">
+        <h3 class="panel__title">
+            ウォッチリスト{% if preview_watchlist %} · {{ preview_watchlist.name }}{% endif %}
+        </h3>
+        <a class="btn btn--ghost btn--sm" href="/watchlists">すべて表示 →</a>
+    </header>
+    {% if preview_rows %}
+    <div class="panel__body panel__body--flush">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>銘柄</th>
+                    <th class="num">株価</th>
+                    <th class="num">PER</th>
+                    <th class="num">PBR</th>
+                    <th class="num">時価総額</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in preview_rows %}
+                <tr>
+                    <td>
+                        <a href="/stocks/{{ row.company_id }}" style="color: var(--fg-1);">
+                            <div style="font-weight: var(--fw-semibold);">{{ row.name }}</div>
+                            <div class="subtle small" style="font-family: var(--font-mono);">
+                                {{ row.company_id }}{% if row.market %} · {{ row.market }}{% endif %}
+                            </div>
+                        </a>
+                    </td>
+                    <td class="num-cell">
+                        {% if row.price is not none %}
+                        {{ "%.2f"|format(row.price) }}{% if row.currency %} <span class="subtle small">{{ row.currency }}</span>{% endif %}
+                        {% else %}—{% endif %}
+                    </td>
+                    <td class="num-cell">{% if row.per is not none %}{{ "%.2f"|format(row.per) }}{% else %}—{% endif %}</td>
+                    <td class="num-cell">{% if row.pbr is not none %}{{ "%.2f"|format(row.pbr) }}{% else %}—{% endif %}</td>
+                    <td class="num-cell">
+                        {% if row.market_cap is not none %}
+                            {% set cap = row.market_cap %}
+                            {% if cap >= 1e12 %}{{ "%.2f"|format(cap/1e12) }}T
+                            {% elif cap >= 1e9 %}{{ "%.2f"|format(cap/1e9) }}B
+                            {% elif cap >= 1e6 %}{{ "%.2f"|format(cap/1e6) }}M
+                            {% else %}{{ "%.0f"|format(cap) }}{% endif %}
+                        {% else %}—{% endif %}
+                    </td>
+                    <td style="text-align: right; padding-right: var(--space-4);">
+                        <a class="muted" href="/stocks/{{ row.company_id }}" aria-label="詳細を開く">
+                            {{ icon("chevRight", 14) }}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="panel__body">
+        <p class="empty-state">ウォッチリストがありません。<a href="/watchlists">作成する</a> か <a href="/stocks/search">銘柄を検索</a> して追加してください。</p>
+    </div>
+    {% endif %}
+</section>
+
+<div class="grid-2" style="margin-top: var(--space-4);">
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">最近の同期</h3>
+            <a class="btn btn--ghost btn--sm" href="/jobs">{{ icon("zap", 14) }} ジョブ</a>
+        </header>
+        <div class="panel__body">
+            {% if recent_syncs %}
+            <ul class="event-list">
+                {% for s in recent_syncs %}
+                <li class="event-row">
+                    {% set badge_variant = {"ok": "badge--up", "missing": "badge--mono", "pending": "badge--mono"}.get(s.status, "badge--down") %}
+                    <span class="badge {{ badge_variant }}" style="text-transform: uppercase;">
+                        <span class="status-dot"></span>{{ s.status }}
+                    </span>
+                    <a href="/stocks/{{ s.company_id }}" class="event-row__id">{{ s.company_id }}</a>
+                    <span class="event-row__meta">
+                        {% if s.error_message %}{{ s.error_message[:48] }}{% else %}ok{% endif %}
+                    </span>
+                    <span class="event-row__time">
+                        {% if s.fetched_at %}{{ s.fetched_at.strftime("%m-%d %H:%M") }}{% else %}—{% endif %}
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="empty-state">同期実行履歴がありません。</p>
+            {% endif %}
+        </div>
+    </section>
+    <section class="panel" id="llm-queue-panel">
+        <header class="panel__header">
+            <h3 class="panel__title">LLM分析キュー</h3>
+            <span class="subtle small" id="llm-queue-count"></span>
+        </header>
+        <div class="panel__body">
+            <ul class="event-list" id="llm-queue-list"></ul>
+            <p class="empty-state" id="llm-queue-empty">実行中の分析はありません。</p>
+        </div>
+    </section>
+</div>
+{% endblock %}

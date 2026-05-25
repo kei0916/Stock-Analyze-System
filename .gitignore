@@ -1,0 +1,26 @@
+/data/
+.env
+.infisical.json
+config/settings.yaml
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.coverage
+.venv/
+node_modules/
+*.pyc
+.worktrees/
+logs/
+coverage.json
+.claude/
+CLAUDE.md
+.codex
+opencode.json
+benchmark-prompt.md
+
+# Living Docs (ADR-005) — generated/built artifacts
+docs/generated/
+docs-site/docs/
+docs-site/build/
+docs-site/node_modules/
+docs-site/.docusaurus/

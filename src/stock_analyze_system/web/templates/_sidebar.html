@@ -1,0 +1,31 @@
+{% from "_macros.html" import icon %}
+{% set path = request.url.path %}
+{% set links = [
+    ("/", "ダッシュボード", "chart"),
+    ("/stocks/search", "銘柄", "search"),
+    ("/watchlists", "ウォッチリスト", "bookmark"),
+    ("/screening", "スクリーニング", "filter"),
+    ("/targets", "分析ターゲット", "target"),
+    ("/jobs", "ジョブ", "zap"),
+] %}
+<aside class="sidebar">
+    <div class="sidebar__brand">
+        <img src="/static/assets/mark.svg" width="22" height="22" alt="">
+        <span class="sidebar__brand-text">STOCK ANALYZER</span>
+    </div>
+    <nav class="sidebar__nav">
+        {% for href, label, ic in links %}
+        {% set is_active = (href == "/" and path == "/") or (href != "/" and path.startswith(href)) %}
+        <a class="sidebar__link" href="{{ href }}"
+           {% if is_active %}aria-current="page"{% endif %}>
+            {{ icon(ic, 15) }}{{ label }}
+        </a>
+        {% endfor %}
+    </nav>
+    <div class="sidebar__footer">
+        <div class="sidebar__footer-row">
+            <span>v0.1.0</span>
+            <span>SQLite WAL</span>
+        </div>
+    </div>
+</aside>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}ログイン — Stock Analyze System{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block topbar %}{% endblock %}
+{% block content %}
+<div class="login-shell">
+    <div class="login-card">
+        <div class="login-card__brand">
+            <img src="/static/assets/mark.svg" width="28" height="28" alt="">
+            <span class="sidebar__brand-text">STOCK ANALYZER</span>
+        </div>
+        <h2 class="login-card__title">ログイン</h2>
+        {% if error %}
+        <div class="login-card__error">{{ error }}</div>
+        {% endif %}
+        <form method="post" action="/login" class="stack">
+            <div class="field">
+                <label class="label" for="password">パスワード</label>
+                <input class="input input--mono" id="password" name="password" type="password"
+                       required autofocus placeholder="••••••••">
+            </div>
+            <button class="btn btn--primary btn--block" type="submit">ログイン</button>
+        </form>
+        <div class="login-card__footer">ローカル認証 · single-user mode</div>
+    </div>
+</div>
+{% endblock %}

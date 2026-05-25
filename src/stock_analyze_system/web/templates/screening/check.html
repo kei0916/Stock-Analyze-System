@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["スクリーニング"] %}
+{% from "_macros.html" import icon %}
+{% block title %}スクリーニング{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>スクリーニング</h1>
+        <div class="page-header__meta">
+            <span id="screening-results-count">— / —</span>
+            <span class="subtle"> 銘柄</span>
+        </div>
+    </div>
+</div>
+
+<section id="screening-check"
+         data-fields-url="/api/screening/fields"
+         data-run-url="/api/screening/run"
+         data-distribution-url-template="/api/screening/distributions/{field}"
+         data-targets-url="/api/screening/targets"
+         class="stack stack--lg">
+
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">フィルター</h3>
+            <p id="screening-status" class="muted small" role="status">フィールドを読み込んでいます…</p>
+        </header>
+        <div class="panel__body">
+            <div id="screening-histogram-grid" class="hr-grid"></div>
+        </div>
+        <div class="panel__body screening-panel-footer">
+            <div class="flex flex--gap-3 flex--center">
+                <select id="screening-add-field" class="input" style="max-width: 220px;">
+                    <option value="">+ フィールド追加</option>
+                </select>
+                <label class="flex flex--center small muted" style="gap: var(--space-2);">
+                    <input id="screening-include-null" type="checkbox"> NULLを含める
+                </label>
+                <label class="flex flex--center small muted" style="gap: var(--space-2);">
+                    件数
+                    <input id="screening-limit" class="input input--mono" type="number" min="1" max="200" value="50" style="width: 6rem;">
+                </label>
+            </div>
+            <div class="flex flex--gap-2">
+                <button id="screening-reset" type="button" class="btn btn--sm">リセット</button>
+                <button id="screening-apply" type="button" class="btn btn--primary btn--sm">{{ icon("filter", 14) }} 適用</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">結果</h3>
+            <div id="screening-targets-actions" class="panel__action">
+                <span id="screening-selected-count" class="muted small">0件選択</span>
+                <button id="screening-add-targets" type="button" class="btn btn--primary btn--sm" disabled>
+                    {{ icon("bookmark", 14) }} ターゲットへ追加
+                </button>
+            </div>
+        </header>
+        <div class="panel__body" id="screening-results">
+            <p class="empty-state">「適用」を押してスクリーニングを実行してください。</p>
+        </div>
+        <div class="panel__body" style="padding-top: 0;">
+            <p id="screening-targets-status" class="muted small" role="status"></p>
+        </div>
+    </section>
+</section>
+<script src="/static/screening_check.js?v={{ asset_version }}"></script>
+{% endblock %}

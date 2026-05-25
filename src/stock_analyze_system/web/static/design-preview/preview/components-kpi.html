@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>KPI tiles</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:20px; width:700px; box-sizing:border-box; background:var(--bg); }
+  .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+  .kpi { border:1px solid var(--border); border-radius:8px; padding:14px; background:var(--surface); display:flex; flex-direction:column; gap:4px; }
+  .kpi .label { font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-2); }
+  .kpi .val { font-family:var(--font-mono); font-size:22px; font-weight:600; color:var(--fg-1); font-variant-numeric:tabular-nums; letter-spacing:-0.01em; }
+  .kpi .delta { font-family:var(--font-mono); font-size:11px; font-variant-numeric:tabular-nums; }
+  .up { color: var(--up); } .down { color: var(--down); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="kpi"><div class="label">PER</div><div class="val">28.45</div><div class="delta up">↗ +2.1</div></div>
+    <div class="kpi"><div class="label">PBR</div><div class="val">45.62</div><div class="delta up">↗ +5.4</div></div>
+    <div class="kpi"><div class="label">EV/EBITDA</div><div class="val">21.18</div><div class="delta down">↘ −0.8</div></div>
+    <div class="kpi"><div class="label">FCF Yield</div><div class="val">3.42%</div><div class="delta down">↘ −0.4pp</div></div>
+  </div>
+</body>
+</html>

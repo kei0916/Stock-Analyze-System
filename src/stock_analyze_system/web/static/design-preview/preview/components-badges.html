@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Badges + Tags</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:24px; width:700px; box-sizing:border-box; background:var(--bg); display:flex; flex-direction:column; gap:14px; }
+  .row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .label { font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3); width:140px; flex-shrink:0; }
+  .badge {
+    display:inline-flex; align-items:center; gap:5px;
+    font: 500 11px/1 var(--font-sans);
+    padding: 4px 8px; border-radius: 4px;
+    background: var(--surface-2); color: var(--fg-2); border:1px solid var(--border);
+  }
+  .badge.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .badge.up   { background: var(--up-soft); color: var(--up); border-color: transparent; }
+  .badge.down { background: var(--down-soft); color: var(--down); border-color: transparent; }
+  .badge.accent { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+  .badge.solid { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+  .dot { width:6px; height:6px; border-radius:999px; background: currentColor; }
+  .pill { padding: 4px 10px; border-radius: 999px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="label">Status</span>
+    <span class="badge"><span class="dot" style="color:#A1A6AE"></span>monitoring</span>
+    <span class="badge accent"><span class="dot"></span>analyzing</span>
+    <span class="badge up"><span class="dot"></span>active</span>
+    <span class="badge down"><span class="dot"></span>delisted</span>
+  </div>
+  <div class="row">
+    <span class="label">Market</span>
+    <span class="badge mono">US</span>
+    <span class="badge mono">JP</span>
+    <span class="badge mono">NYSE</span>
+    <span class="badge mono">NASDAQ</span>
+    <span class="badge mono">TSE</span>
+  </div>
+  <div class="row">
+    <span class="label">Standard</span>
+    <span class="badge mono">US-GAAP</span>
+    <span class="badge mono">IFRS</span>
+    <span class="badge mono">JP-GAAP</span>
+  </div>
+  <div class="row">
+    <span class="label">Delta (numeric)</span>
+    <span class="badge up mono">↗ +12.4%</span>
+    <span class="badge down mono">↘ −3.8%</span>
+    <span class="badge mono">±0.0%</span>
+  </div>
+  <div class="row">
+    <span class="label">Tag (pill)</span>
+    <span class="badge pill">growth</span>
+    <span class="badge pill">value</span>
+    <span class="badge pill accent">watching</span>
+  </div>
+</body>
+</html>

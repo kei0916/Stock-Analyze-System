@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["ジョブ"] %}
+{% block title %}ジョブ{% endblock %}
+{% block content %}
+<div class="page-header"><h1>ジョブ</h1></div>
+{% if error %}
+<div class="login-card__error" style="margin-bottom: var(--space-4);">
+    <strong>エラー:</strong> {{ error }}
+</div>
+{% endif %}
+<div class="grid-2">
+    <section class="panel">
+        <header class="panel__header"><h3 class="panel__title">単一銘柄を同期</h3></header>
+        <div class="panel__body stack">
+            <p class="muted">財務・バリュエーション・ファイリングをすべて取得します。</p>
+            <form method="post" action="/jobs/sync" class="flex flex--gap-2">
+                <input class="input" name="company_id" required placeholder="例: US_AAPL">
+                <button class="btn btn--primary" type="submit">実行</button>
+            </form>
+        </div>
+    </section>
+    <section class="panel">
+        <header class="panel__header"><h3 class="panel__title">日次バッチ</h3></header>
+        <div class="panel__body stack">
+            <p class="muted">市場単位でターゲット銘柄を一括更新します。</p>
+            <form method="post" action="/jobs/daily" class="flex flex--gap-2">
+                <select class="input" name="market">
+                    <option value="us">米国</option>
+                    <option value="jp">日本</option>
+                </select>
+                <button class="btn btn--primary" type="submit">実行</button>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

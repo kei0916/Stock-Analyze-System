@@ -1,0 +1,66 @@
+<div class="stack" data-financial-panel data-company-id="{{ company.id }}">
+    <div class="flex flex--between flex--center">
+        <div class="segmented" role="tablist" data-period-segmented>
+            <button class="segmented__option" data-period-value="annual" data-active="true">通期</button>
+            <button class="segmented__option" data-period-value="quarterly">四半期</button>
+        </div>
+        <select data-period-select hidden>
+            <option value="annual">通期</option>
+            <option value="quarterly">四半期</option>
+        </select>
+        <p class="muted" data-financial-summary>読み込み中…</p>
+    </div>
+
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">財務推移</h3>
+            <span class="muted" style="font-family: var(--font-mono); font-size: 11px;">バー: 値 / ライン: YoY%</span>
+        </header>
+        <div class="panel__body">
+            <div class="chart-fieldpicker" data-financial-fieldpicker>
+                <div class="chart-fieldpicker__chips" data-fieldpicker-chips></div>
+                <select class="input chart-fieldpicker__add" data-fieldpicker-add aria-label="フィールド追加">
+                    <option value="">+ フィールド追加</option>
+                </select>
+            </div>
+            <div class="chart-stack" data-financial-charts></div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <header class="panel__header"><h3 class="panel__title">財務サマリ</h3></header>
+        <div class="panel__body panel__body--flush">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>期末</th>
+                        <th class="num-cell">売上</th>
+                        <th class="num-cell">営業利益</th>
+                        <th class="num-cell">純利益</th>
+                        <th class="num-cell">EPS</th>
+                    </tr>
+                </thead>
+                <tbody data-financial-body></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel" data-metrics-panel data-company-id="{{ company.id }}">
+        <header class="panel__header"><h3 class="panel__title">財務指標</h3></header>
+        <div class="panel__body panel__body--flush">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>期末</th>
+                        <th class="num-cell">ROE</th>
+                        <th class="num-cell">ROA</th>
+                        <th class="num-cell">営業利益率</th>
+                        <th class="num-cell">純利益率</th>
+                        <th class="num-cell">売上成長率</th>
+                    </tr>
+                </thead>
+                <tbody data-metrics-body></tbody>
+            </table>
+        </div>
+    </section>
+</div>

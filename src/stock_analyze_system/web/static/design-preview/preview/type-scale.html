@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Typography scale</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:24px; width:700px; box-sizing:border-box; background:var(--bg); }
+  .row { display:grid; grid-template-columns: 90px 1fr 70px; gap:16px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--border); }
+  .row:last-child { border-bottom:0; }
+  .tok { font-family:var(--font-mono); font-size:11px; color:var(--fg-3); }
+  .meta { font-family:var(--font-mono); font-size:11px; color:var(--fg-2); text-align:right; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tok">--text-h1</span><span style="font-size:28px; font-weight:700; letter-spacing:-0.01em; color:var(--fg-1);">財務サマリ</span><span class="meta">28 / 700</span></div>
+  <div class="row"><span class="tok">--text-h2</span><span style="font-size:20px; font-weight:600; letter-spacing:-0.01em; color:var(--fg-1);">バリュエーション履歴</span><span class="meta">20 / 600</span></div>
+  <div class="row"><span class="tok">--text-h3</span><span style="font-size:16px; font-weight:600; color:var(--fg-1);">主要指標</span><span class="meta">16 / 600</span></div>
+  <div class="row"><span class="tok">--text-body</span><span style="font-size:14px; color:var(--fg-1);">米国株および日本株のXBRLデータを取得し、指標を計算します。</span><span class="meta">14 / 400</span></div>
+  <div class="row"><span class="tok">--text-sm</span><span style="font-size:13px; color:var(--fg-2);">前年同期比 +12.4% (調整後)</span><span class="meta">13 / 400</span></div>
+  <div class="row"><span class="tok">--text-xs</span><span style="font-size:12px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-2);">FISCAL YEAR · 2024</span><span class="meta">12 / 500</span></div>
+</body>
+</html>

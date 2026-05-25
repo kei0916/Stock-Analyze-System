@@ -1,0 +1,73 @@
+<div class="stack" data-rag-panel data-company-id="{{ company.id }}">
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">保存済み定型分析</h3>
+            <div class="panel__action">
+                <label class="muted" for="rag-filing-select" style="font-size: var(--text-xs);">対象決算</label>
+                <select class="input" id="rag-filing-select" data-rag-filing-select
+                        style="width: 18rem;">
+                    <option value="">読み込み中…</option>
+                </select>
+                <button class="btn btn--primary btn--sm" type="button" data-rag-analyze>
+                    決算分析🔍
+                </button>
+            </div>
+        </header>
+        <div class="panel__body">
+            <p class="subtle" data-rag-filing-meta hidden style="font-size: var(--text-xs); margin-bottom: var(--space-2);"></p>
+            <p class="subtle" data-rag-content-warning hidden style="font-size: var(--text-xs); color: var(--down); margin-bottom: var(--space-2);">
+                この決算は本体未取得です。「決算分析🔍」を押すと自動取得しますが時間がかかる場合があります。
+            </p>
+
+            <div class="progress" data-rag-analyze-progress hidden role="status" aria-live="polite">
+                <div class="progress__head">
+                    <span class="progress__label" data-progress-label>準備中…</span>
+                    <span class="progress__count" data-progress-count></span>
+                </div>
+                <div class="progress__track">
+                    <div class="progress__bar" data-progress-bar style="width: 0%;"></div>
+                </div>
+                <p class="progress__error subtle small" data-progress-error hidden></p>
+                <div data-rag-rerun hidden style="margin-top: var(--space-2);">
+                    <button class="btn btn--sm" type="button" data-rag-rerun-btn>再実行</button>
+                </div>
+            </div>
+
+            <div data-rag-analyses>
+                <p class="muted">分析結果を確認中です。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">RAG Q&amp;A</h3>
+        </header>
+        <div class="panel__body stack">
+            <textarea class="input" data-rag-question rows="3"
+                      placeholder="例: Appleの2024年度の売上高は？"></textarea>
+            <div>
+                <button class="btn btn--primary" data-rag-ask>送信</button>
+            </div>
+            <div data-rag-answer hidden style="border-top: 1px solid var(--border); padding-top: var(--space-3);">
+                <p style="white-space: pre-wrap; color: var(--fg-1);" data-rag-answer-text></p>
+                <p class="subtle" style="font-size: var(--text-xs); margin-top: var(--space-2);">
+                    Pages: <span data-rag-source-pages>—</span>
+                    · Sections: <span data-rag-source-sections>—</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">質問履歴</h3>
+            <button class="btn btn--ghost btn--sm" data-rag-history-refresh>再読込</button>
+        </header>
+        <div class="panel__body">
+            <div data-rag-history>
+                <p class="muted">読み込み中…</p>
+            </div>
+        </div>
+    </section>
+</div>

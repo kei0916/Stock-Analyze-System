@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Numeric type</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:24px; width:700px; box-sizing:border-box; background:var(--bg); }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap:24px; }
+  .panel { border:1px solid var(--border); border-radius:8px; padding:16px; background:var(--surface); }
+  .label { font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-2); margin-bottom:8px; }
+  .big { font-family:var(--font-mono); font-size:32px; font-weight:600; letter-spacing:-0.01em; color:var(--fg-1); font-variant-numeric:tabular-nums; }
+  .delta { font-family:var(--font-mono); font-size:13px; font-variant-numeric:tabular-nums; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:13px; font-variant-numeric:tabular-nums; }
+  th, td { text-align:right; padding:5px 0; color:var(--fg-1); }
+  th { font-family:var(--font-sans); font-weight:500; font-size:11px; color:var(--fg-2); text-transform:uppercase; letter-spacing:0.06em; padding-bottom:8px; border-bottom:1px solid var(--border); }
+  td:first-child, th:first-child { text-align:left; color:var(--fg-2); font-family:var(--font-sans); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="panel">
+      <div class="label">Q4 2024 売上高</div>
+      <div class="big">94.93B</div>
+      <div class="delta" style="color:#22C55E">↗ +6.2% YoY</div>
+    </div>
+    <div class="panel">
+      <div class="label">Q4 2024 EPS</div>
+      <div class="big">2.40</div>
+      <div class="delta" style="color:#EF4444">↘ −1.8% QoQ</div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <table>
+      <thead><tr><th>指標</th><th>2022</th><th>2023</th><th>2024</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue</td><td>394,328</td><td>383,285</td><td>391,035</td></tr>
+        <tr><td>Op. Income</td><td>119,437</td><td>114,301</td><td>123,216</td></tr>
+        <tr><td>Net Income</td><td>99,803</td><td>96,995</td><td>93,736</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

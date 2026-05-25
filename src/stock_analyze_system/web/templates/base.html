@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Stock Analyze System{% endblock %}</title>
+    <link rel="stylesheet" href="/static/app.css?v={{ asset_version }}">
+    <script defer src="/static/app.js?v={{ asset_version }}"
+            data-asset-version="{{ asset_version }}"></script>
+</head>
+<body>
+    <div class="layout">
+        {% block sidebar %}{% include "_sidebar.html" %}{% endblock %}
+        <main class="main">
+            {% block topbar %}{% include "_topbar.html" %}{% endblock %}
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

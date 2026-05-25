@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["銘柄", company.name, "RAG Q&A"] %}
+{% block title %}RAG Q&A — {{ company.name }}{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>{{ company.name }} <span class="muted">— RAG Q&amp;A</span></h1>
+        <div class="page-header__meta">{{ company.id }} · <a href="/stocks/{{ company.id }}">← 銘柄詳細に戻る</a></div>
+    </div>
+</div>
+{% include "stocks/_tab_analysis.html" %}
+{% endblock %}

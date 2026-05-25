@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Spacing scale</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:24px; width:700px; box-sizing:border-box; background:var(--bg); }
+  .row { display:grid; grid-template-columns: 90px 1fr 60px; gap:16px; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); }
+  .row:last-child { border-bottom:0; }
+  .tok { font-family:var(--font-mono); font-size:11px; color:var(--fg-2); }
+  .bar { background:var(--accent); height:14px; border-radius:2px; }
+  .px { font-family:var(--font-mono); font-size:11px; color:var(--fg-3); text-align:right; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tok">--space-1</span><div class="bar" style="width:4px"></div><span class="px">4 px</span></div>
+  <div class="row"><span class="tok">--space-2</span><div class="bar" style="width:8px"></div><span class="px">8 px</span></div>
+  <div class="row"><span class="tok">--space-3</span><div class="bar" style="width:12px"></div><span class="px">12 px</span></div>
+  <div class="row"><span class="tok">--space-4</span><div class="bar" style="width:16px"></div><span class="px">16 px</span></div>
+  <div class="row"><span class="tok">--space-5</span><div class="bar" style="width:24px"></div><span class="px">24 px</span></div>
+  <div class="row"><span class="tok">--space-6</span><div class="bar" style="width:32px"></div><span class="px">32 px</span></div>
+  <div class="row"><span class="tok">--space-7</span><div class="bar" style="width:48px"></div><span class="px">48 px</span></div>
+  <div class="row"><span class="tok">--space-8</span><div class="bar" style="width:64px"></div><span class="px">64 px</span></div>
+</body>
+</html>

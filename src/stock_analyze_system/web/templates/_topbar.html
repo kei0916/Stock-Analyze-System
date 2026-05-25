@@ -1,0 +1,25 @@
+{% from "_macros.html" import icon %}
+<header class="topbar">
+    <div class="topbar__breadcrumbs">
+        {% for crumb in breadcrumbs or [] %}
+            {% if not loop.first %}<span class="topbar__crumb-sep">→</span>{% endif %}
+            <span class="topbar__crumb{% if loop.last %} topbar__crumb--current{% endif %}">{{ crumb }}</span>
+        {% endfor %}
+    </div>
+    <div class="topbar__search">
+        <span class="topbar__search-icon">{{ icon("search", 14) }}</span>
+        <input class="topbar__search-input" type="search"
+               data-stock-search data-search-url="/stocks/search/results"
+               placeholder="銘柄を検索 (例: AAPL, 7203)">
+    </div>
+    <a class="topbar__badge" href="/" id="analysis-status-badge" hidden
+       aria-label="分析キューの状態"
+       aria-live="polite" aria-atomic="true" data-analysis-status-badge>
+        <span class="topbar__badge-dot"></span>
+        <span class="topbar__badge-text">分析中</span>
+    </a>
+    <div class="topbar__user">
+        {{ icon("user", 16, cls="muted") }}
+        <a href="/logout">ログアウト</a>
+    </div>
+</header>

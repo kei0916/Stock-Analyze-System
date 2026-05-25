@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["分析ターゲット"] %}
+{% block title %}分析ターゲット{% endblock %}
+{% block content %}
+<div class="page-header"><h1>分析ターゲット</h1></div>
+
+<form method="post" action="/targets" class="panel">
+    <div class="panel__body flex flex--gap-2">
+        <input class="input" name="company_id" required placeholder="例: US_AAPL">
+        <button class="btn btn--primary" type="submit">追加</button>
+    </div>
+</form>
+
+<section class="panel" style="margin-top: var(--space-4);">
+    <ul class="search-results">
+        {% for t in targets %}
+        <li class="flex flex--between flex--center" style="padding: var(--space-3); border-bottom: 1px solid var(--border);">
+            <a href="/stocks/{{ t.company_id }}" class="search-results__title">{{ t.company_id }}</a>
+            <form method="post" action="/targets/{{ t.company_id }}/delete">
+                <button class="btn btn--danger btn--sm" type="submit">削除</button>
+            </form>
+        </li>
+        {% else %}
+        <li><p class="empty-state">ターゲットがありません。</p></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

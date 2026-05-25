@@ -1,0 +1,14 @@
+{% if companies %}
+<ul class="search-results">
+    {% for c in companies %}
+    <li>
+        <a class="search-results__item" href="/stocks/{{ c.id }}">
+            <div class="search-results__title">{{ c.ticker or c.security_code }} — {{ c.name }}</div>
+            <div class="search-results__meta">{{ c.id }} · {{ c.market }}</div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">該当する銘柄がありません。</p>
+{% endif %}

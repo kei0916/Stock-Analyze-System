@@ -1,0 +1,38 @@
+<div class="stack" data-valuation-panel data-company-id="{{ company.id }}">
+    <p class="muted" data-valuation-summary>読み込み中…</p>
+
+    <section class="panel">
+        <header class="panel__header">
+            <h3 class="panel__title">バリュエーション推移</h3>
+            <span class="muted" style="font-family: var(--font-mono); font-size: 11px;">日次 5年推移</span>
+        </header>
+        <div class="panel__body">
+            <div class="chart-fieldpicker" data-valuation-fieldpicker>
+                <div class="chart-fieldpicker__chips" data-valuation-chips></div>
+                <select class="input chart-fieldpicker__add" data-valuation-add aria-label="フィールド追加">
+                    <option value="">+ フィールド追加</option>
+                </select>
+            </div>
+            <div class="chart-stack" data-valuation-charts></div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <header class="panel__header"><h3 class="panel__title">バリュエーション履歴</h3></header>
+        <div class="panel__body panel__body--flush">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>日付</th>
+                        <th class="num-cell">株価</th>
+                        <th class="num-cell">PER</th>
+                        <th class="num-cell">PBR</th>
+                        <th class="num-cell">EV/EBITDA</th>
+                        <th class="num-cell">PSR</th>
+                    </tr>
+                </thead>
+                <tbody data-valuation-body></tbody>
+            </table>
+        </div>
+    </section>
+</div>
