@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Data table</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:20px; width:700px; box-sizing:border-box; background:var(--bg); }
+  table { width:100%; border-collapse:collapse; }
+  thead th {
+    text-align:right; font: 500 11px var(--font-sans); letter-spacing:0.06em; text-transform:uppercase;
+    color: var(--fg-2); padding: 8px 10px; border-bottom:1px solid var(--border-strong);
+  }
+  thead th:first-child, tbody td:first-child { text-align:left; }
+  tbody td {
+    font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+    font-size: 13px; color: var(--fg-1); padding: 9px 10px; border-bottom: 1px solid var(--border);
+  }
+  tbody td:first-child { font-family: var(--font-sans); color: var(--fg-1); font-weight: 500; }
+  tbody td .sub { color: var(--fg-3); font-family: var(--font-mono); font-size:11px; margin-left:6px; }
+  tbody tr:hover { background: var(--surface-2); }
+  tbody tr.selected { background: var(--surface-2); box-shadow: inset 2px 0 0 var(--accent); }
+  .up { color: var(--up); } .down { color: var(--down); }
+</style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr><th>銘柄</th><th>株価</th><th>PER</th><th>PBR</th><th>ROE</th><th>1Y</th></tr>
+    </thead>
+    <tbody>
+      <tr class="selected"><td>Apple <span class="sub">US_AAPL</span></td><td>178.32</td><td>28.45</td><td>45.62</td><td>156.2%</td><td class="up">+24.1%</td></tr>
+      <tr><td>Microsoft <span class="sub">US_MSFT</span></td><td>415.10</td><td>34.18</td><td>12.84</td><td>38.5%</td><td class="up">+18.7%</td></tr>
+      <tr><td>Toyota <span class="sub">JP_7203</span></td><td>2,845</td><td>10.21</td><td>1.18</td><td>11.6%</td><td class="down">−4.2%</td></tr>
+      <tr><td>Berkshire B <span class="sub">US_BRK-B</span></td><td>418.55</td><td>9.87</td><td>1.55</td><td>17.4%</td><td class="up">+12.3%</td></tr>
+      <tr><td>Sony <span class="sub">JP_6758</span></td><td>3,210</td><td>16.42</td><td>2.04</td><td>12.1%</td><td class="down">−1.8%</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Accent + semantic colors</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:20px; width:700px; box-sizing:border-box; background:var(--bg); }
+  .row { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-bottom:14px; }
+  .swatch { border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .chip { height:80px; display:flex; align-items:flex-end; padding:10px; }
+  .chip .label { font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+  .body { padding:10px 12px; display:flex; justify-content:space-between; align-items:baseline; }
+  .name { font-size:13px; font-weight:600; color:var(--fg-1); }
+  .hex { font-family:var(--font-mono); font-size:11px; color:var(--fg-2); }
+  .ramp { display:grid; grid-template-columns: repeat(5, 1fr); gap:0; border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  .ramp > div { height:36px; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:10px; color:#031018; font-weight:600; }
+  .ramp-label { font-size:11px; color:var(--fg-2); margin:8px 0 6px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch">
+      <div class="chip" style="background:#22D3EE"><span class="label" style="color:#031018">Accent</span></div>
+      <div class="body"><span class="name">Cyan 400</span><span class="hex">#22D3EE</span></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#22C55E"><span class="label" style="color:#031018">Up</span></div>
+      <div class="body"><span class="name">Green 500</span><span class="hex">#22C55E</span></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#EF4444"><span class="label" style="color:#FFFFFF">Down</span></div>
+      <div class="body"><span class="name">Red 500</span><span class="hex">#EF4444</span></div>
+    </div>
+  </div>
+  <div class="ramp-label">Accent opacity ramp · used for chart series in place of additional hues</div>
+  <div class="ramp">
+    <div style="background:rgba(34,211,238,1.0)">100</div>
+    <div style="background:rgba(34,211,238,0.7)">70</div>
+    <div style="background:rgba(34,211,238,0.4)">40</div>
+    <div style="background:#A1A6AE; color:#0B0D10">FG2</div>
+    <div style="background:#5C636E; color:#F2F4F7">FG3</div>
+  </div>
+</body>
+</html>

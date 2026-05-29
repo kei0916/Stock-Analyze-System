@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 32" fill="none">
+  
+  <text x="0" y="22" class="br" fill="#22D3EE">[</text>
+  <circle cx="16" cy="14.5" r="3" fill="#22D3EE"></circle>
+  <text x="22" y="22" class="br" fill="#22D3EE">]</text>
+  <text x="42" y="22" class="wm" fill="currentColor">STOCK ANALYZER</text>
+</svg>

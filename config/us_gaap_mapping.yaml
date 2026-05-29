@@ -1,0 +1,58 @@
+revenue:
+  - us-gaap:Revenues
+  - us-gaap:SalesRevenueNet
+  - us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax
+operating_income:
+  - us-gaap:OperatingIncomeLoss
+net_income:
+  - us-gaap:NetIncomeLoss
+  - us-gaap:ProfitLoss
+total_assets:
+  - us-gaap:Assets
+equity:
+  - us-gaap:StockholdersEquity
+  - us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+current_assets:
+  - us-gaap:AssetsCurrent
+current_liabilities:
+  - us-gaap:LiabilitiesCurrent
+total_debt:
+  - us-gaap:Debt
+  - us-gaap:LongTermDebt
+  - us-gaap:DebtCurrent
+cash:
+  - us-gaap:CashAndCashEquivalentsAtCarryingValue
+  - us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents
+inventory:
+  - us-gaap:InventoryNet
+cogs:
+  - us-gaap:CostOfGoodsAndServicesSold
+  - us-gaap:CostOfRevenue
+operating_cf:
+  - us-gaap:NetCashProvidedByUsedInOperatingActivities
+capex:
+  - us-gaap:PaymentsToAcquirePropertyPlantAndEquipment
+  - us-gaap:PaymentsToAcquireProductiveAssets
+ebitda:
+  - us-gaap:EarningsBeforeInterestTaxesDepreciationAmortization
+eps:
+  - us-gaap:EarningsPerShareDiluted
+  - us-gaap:EarningsPerShareBasic
+dps:
+  - us-gaap:CommonStockDividendsPerShareDeclared
+  - us-gaap:CommonStockDividendsPerShareCashPaid
+tax_expense:
+  - us-gaap:IncomeTaxExpenseBenefit
+income_before_tax:
+  - us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest
+  - us-gaap:IncomeBeforeIncomeTaxes
+shares_outstanding:
+  - us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding
+  - us-gaap:WeightedAverageNumberOfSharesOutstandingBasic
+  - us-gaap:CommonStockSharesOutstanding
+dividends_paid:
+  - us-gaap:PaymentsOfDividends
+  - us-gaap:PaymentsOfDividendsCommonStock
+share_repurchases:
+  - us-gaap:PaymentsForRepurchaseOfCommonStock
+  - us-gaap:TreasuryStockPurchased

@@ -1,0 +1,84 @@
+database:
+  path: data/stock_analyze.db
+sec_edgar:
+  email: "user@example.com"
+  rate_limit_rps: 10
+edinet:
+  base_url: "https://api.edinet-fsa.go.jp/api/v2"
+  rate_limit_interval: 5
+fmp:
+  base_url: "https://financialmodelingprep.com/stable"
+  rate_limit_rps: 5
+  daily_limit: 250
+yahoo_finance:
+  rate_limit_rps: 2
+  batch_size: 20
+google_sheets:
+  enabled: false
+  # Set spreadsheet_id via Infisical secret GOOGLE_SHEETS_SPREADSHEET_ID
+  spreadsheet_id: ""
+  worksheet_name: "test"  # must match the exact tab name in your Google Sheet
+  # Set credentials_json_path via Infisical secret GOOGLE_SHEETS_CREDENTIALS_JSON_PATH
+  credentials_json_path: ""
+  credentials_json_env: "GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON"
+  batch_size: 500
+  poll_interval_seconds: 30
+  max_poll_attempts: 10
+llm:
+  ## --- llama.cpp backend ---
+  ## Start server:
+  ## <llama-cpp-source>/build/bin/llama-server \
+  ##   -m /path/to/models/Qwen3.6-27B-Q4_K_M.gguf \
+  ##   --host 127.0.0.1 --port 8080 -ngl 999 -c 32768 \
+  ##   --cache-type-k q8_0 --cache-type-v q8_0 --reasoning off
+  backend: llamacpp
+  base_url: "http://localhost:8080/v1"
+  model: "openai/Qwen3.6-27B-Q4_K_M.gguf"
+  model_quality: "openai/Qwen3.6-27B-Q4_K_M.gguf"
+  enable_thinking: false
+  temperature: 0.1
+  max_tokens: 16384
+  request_timeout: 600
+  ## --- vLLM backend (uncomment below, comment above) ---
+  ## Requires: OPENAI_API_KEY=dummy in the process environment
+  ## When using managed secrets such as Infisical, set STOCK_ANALYZE_LOAD_DOTENV=0
+  ## to skip the repo-local .env compatibility fallback.
+  ## Start server: vllm serve QuantTrio/Qwen3.5-27B-AWQ --port 8000 --max-model-len 32768 --gpu-memory-utilization 0.9 --trust-remote-code
+  # backend: vllm
+  # base_url: "http://localhost:8000/v1"
+  # model: "openai/QuantTrio/Qwen3.5-27B-AWQ"
+  # model_quality: "openai/QuantTrio/Qwen3.5-27B-AWQ"
+  # temperature: 0.1
+  # max_tokens: 32768
+  # request_timeout: 600
+filings:
+  base_path: "data/filings"
+logging:
+  level: INFO
+  file: "data/logs/stock_analyze.log"
+web:
+  host: "127.0.0.1"
+  port: 8501
+  # WEB_PASSWORD_HASH (env) で bcrypt ハッシュを供給する。生成方法:
+  #   stock-analyze auth hash-password
+  # ハッシュは $2b$12$... の形式。settings.yaml に直書きする場合は password_hash:。
+  # HTTPS 運用時は secure_cookies: true を設定すると HSTS ヘッダも自動付与される。
+  secure_cookies: false
+  # 公開ホスト名を WEB_ALLOWED_HOSTS (env, CSV) で上書きできる。
+  # デフォルトは ["localhost", "127.0.0.1"]。
+  # allowed_hosts:
+  #   - "localhost"
+  #   - "127.0.0.1"
+  # リバプロ配下では trust_proxy_headers + trusted_proxy_hosts + trusted_proxy_hops を設定。
+  # trusted_proxy_hops は「直接接続プロキシを含めて何段の hop を信頼するか」(spoof耐性)。
+  trust_proxy_headers: false
+  trusted_proxy_hops: 1
+  # 全セッション失効 (パスワード rotate 後等): WEB_SESSION_INVALIDATED_AFTER に
+  # 現在 epoch 秒を設定する。iat がそれより古いトークンは middleware で拒否される。
+pageindex:
+  enabled: false
+  toc_check_pages: 20
+  max_pages_per_node: 10
+  max_tokens_per_node: 20000
+  add_node_summary: true
+  cache_indices: true

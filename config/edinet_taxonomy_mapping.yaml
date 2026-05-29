@@ -1,0 +1,134 @@
+revenue:
+  jp_gaap:
+    - jpcrp_cor:NetSalesSummaryOfBusinessResults
+    - jpcrp_cor:NetSales
+  ifrs:
+    - jpcrp_cor:RevenueIFRSSummaryOfBusinessResults
+    - jppfs_ifrs:Revenue
+
+operating_income:
+  jp_gaap:
+    - jpcrp_cor:OperatingIncomeSummaryOfBusinessResults
+    - jpcrp_cor:OperatingIncome
+  ifrs:
+    - jpcrp_cor:OperatingIncomeIFRSSummaryOfBusinessResults
+
+net_income:
+  jp_gaap:
+    - jpcrp_cor:NetIncomeSummaryOfBusinessResults
+    - jpcrp_cor:ProfitLossAttributableToOwnersOfParent
+  ifrs:
+    - jpcrp_cor:ProfitLossAttributableToOwnersOfParentIFRSSummaryOfBusinessResults
+    - jppfs_ifrs:ProfitLossAttributableToOwnersOfParent
+
+total_assets:
+  jp_gaap:
+    - jpcrp_cor:TotalAssetsSummaryOfBusinessResults
+    - jppfs_cor:Assets
+  ifrs:
+    - jpcrp_cor:TotalAssetsIFRSSummaryOfBusinessResults
+    - jppfs_ifrs:Assets
+
+equity:
+  jp_gaap:
+    - jpcrp_cor:NetAssetsSummaryOfBusinessResults
+    - jppfs_cor:NetAssets
+  ifrs:
+    - jpcrp_cor:EquityAttributableToOwnersOfParentIFRSSummaryOfBusinessResults
+    - jppfs_ifrs:EquityAttributableToOwnersOfParent
+
+current_assets:
+  jp_gaap:
+    - jppfs_cor:CurrentAssets
+  ifrs:
+    - jppfs_ifrs:CurrentAssets
+
+current_liabilities:
+  jp_gaap:
+    - jppfs_cor:CurrentLiabilities
+  ifrs:
+    - jppfs_ifrs:CurrentLiabilities
+
+total_debt:
+  jp_gaap:
+    - jppfs_cor:LongTermLoansPayable
+    - jppfs_cor:ShortTermLoansPayable
+  ifrs:
+    - jppfs_ifrs:BorrowingsNoncurrent
+    - jppfs_ifrs:BorrowingsCurrent
+
+cash:
+  jp_gaap:
+    - jppfs_cor:CashAndDeposits
+  ifrs:
+    - jppfs_ifrs:CashAndCashEquivalents
+
+inventory:
+  jp_gaap:
+    - jppfs_cor:MerchandiseAndFinishedGoods
+    - jppfs_cor:Inventories
+  ifrs:
+    - jppfs_ifrs:Inventories
+
+cogs:
+  jp_gaap:
+    - jppfs_cor:CostOfSales
+  ifrs:
+    - jppfs_ifrs:CostOfSales
+
+operating_cf:
+  jp_gaap:
+    - jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesSummaryOfBusinessResults
+    - jpcf_cor:NetCashProvidedByUsedInOperatingActivities
+  ifrs:
+    - jpcrp_cor:CashFlowsFromUsedInOperatingActivitiesIFRSSummaryOfBusinessResults
+
+capex:
+  jp_gaap:
+    - jpcf_cor:PurchaseOfPropertyPlantAndEquipmentAndIntangibleAssets
+  ifrs:
+    - jpcf_cor:PurchaseOfPropertyPlantAndEquipmentAndIntangibleAssetsIFRS
+
+ebitda: {}
+
+eps:
+  jp_gaap:
+    - jpcrp_cor:BasicEarningsLossPerShareSummaryOfBusinessResults
+  ifrs:
+    - jpcrp_cor:BasicEarningsLossPerShareIFRSSummaryOfBusinessResults
+
+dps:
+  jp_gaap:
+    - jpcrp_cor:DividendPaidPerShareSummaryOfBusinessResults
+  ifrs:
+    - jpcrp_cor:DividendPaidPerShareIFRSSummaryOfBusinessResults
+
+tax_expense:
+  jp_gaap:
+    - jppfs_cor:IncomeTaxes
+  ifrs:
+    - jppfs_ifrs:IncomeTaxExpense
+
+income_before_tax:
+  jp_gaap:
+    - jppfs_cor:IncomeBeforeIncomeTaxes
+  ifrs:
+    - jppfs_ifrs:ProfitLossBeforeTax
+
+shares_outstanding:
+  jp_gaap:
+    - jpcrp_cor:NumberOfIssuedSharesAsOfDateOfAnnualSecuritiesReportDEI
+  ifrs:
+    - jpcrp_cor:NumberOfIssuedSharesAsOfDateOfAnnualSecuritiesReportDEI
+
+dividends_paid:
+  jp_gaap:
+    - jpcf_cor:DividendsPaid
+  ifrs:
+    - jpcf_cor:DividendsPaidIFRS
+
+share_repurchases:
+  jp_gaap:
+    - jpcf_cor:PurchaseOfTreasuryStock
+  ifrs:
+    - jpcf_cor:PurchaseOfTreasuryStockIFRS

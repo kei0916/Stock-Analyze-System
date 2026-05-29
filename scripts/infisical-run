@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'USAGE'
+Usage:
+  scripts/infisical-run <command> [args...]
+
+Runs a project command with Infisical-injected secrets and the repo-local .env
+fallback disabled.
+
+Examples:
+  scripts/infisical-run uv run pytest -q
+  scripts/infisical-run uv run stock-analyze serve
+
+Overrides:
+  INFISICAL_ENV=staging scripts/infisical-run uv run pytest -q
+  INFISICAL_PATH=/apps/backend scripts/infisical-run uv run pytest -q
+USAGE
+}
+
+if [[ $# -eq 0 ]]; then
+  usage >&2
+  exit 2
+fi
+
+if ! command -v infisical >/dev/null 2>&1; then
+  echo "infisical CLI is required. Install and run 'infisical login && infisical init' first." >&2
+  exit 127
+fi
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "${script_dir}/.." && pwd)"
+
+cd "${repo_root}"
+
+export STOCK_ANALYZE_LOAD_DOTENV=0
+
+infisical_env="${INFISICAL_ENV:-dev}"
+infisical_path="${INFISICAL_PATH:-/}"
+
+exec infisical run --env="${infisical_env}" --path="${infisical_path}" -- "$@"

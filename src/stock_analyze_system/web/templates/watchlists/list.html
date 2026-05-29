@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["ウォッチリスト"] %}
+{% block title %}ウォッチリスト{% endblock %}
+{% block content %}
+<div class="page-header"><h1>ウォッチリスト</h1></div>
+
+<form method="post" action="/watchlists" class="panel">
+    <div class="panel__body flex flex--gap-2">
+        <input class="input" name="name" required placeholder="名前">
+        <input class="input" name="description" placeholder="説明">
+        <button class="btn btn--primary" type="submit">作成</button>
+    </div>
+</form>
+
+<section class="panel" style="margin-top: var(--space-4);">
+    <ul class="search-results">
+        {% for w in watchlists %}
+        <li>
+            <a class="search-results__item" href="/watchlists/{{ w.id }}">
+                <div class="search-results__title">{{ w.name }}</div>
+                {% if w.description %}<div class="search-results__meta">{{ w.description }}</div>{% endif %}
+            </a>
+        </li>
+        {% else %}
+        <li><p class="empty-state">ウォッチリストがありません。</p></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

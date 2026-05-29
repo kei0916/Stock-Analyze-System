@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Form inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:24px; width:700px; box-sizing:border-box; background:var(--bg); display:flex; flex-direction:column; gap:14px; }
+  .field { display:flex; flex-direction:column; gap:6px; }
+  .lab { font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-2); }
+  .row { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  .input, .select {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    color: var(--fg-1);
+    font: 500 13px var(--font-sans);
+    padding: 8px 12px;
+    width: 100%; box-sizing: border-box;
+  }
+  .input.mono { font-family: var(--font-mono); font-variant-numeric:tabular-nums; }
+  .input:focus, .select:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .input.error { border-color: var(--down); box-shadow: 0 0 0 3px var(--down-soft); }
+  .help { font-size:11px; color:var(--fg-3); }
+  .help.err { color: var(--down); }
+  .seg { display:inline-flex; background: var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:2px; }
+  .seg button {
+    background: transparent; border:0; color: var(--fg-2); font: 500 12px var(--font-sans);
+    padding: 5px 12px; border-radius: 4px; cursor:pointer;
+  }
+  .seg button.on { background: var(--surface); color: var(--fg-1); box-shadow: 0 1px 2px rgba(0,0,0,.4); }
+  .check { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--fg-1); cursor:pointer; }
+  .check span.box { width:16px; height:16px; border-radius:4px; border:1px solid var(--border-strong); display:inline-flex; align-items:center; justify-content:center; }
+  .check.on span.box { background: var(--accent); border-color: var(--accent); }
+  .check.on span.box::after { content:""; width:8px; height:4px; border:2px solid var(--accent-fg); border-top:0; border-right:0; transform:rotate(-45deg) translate(1px,-1px); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="field">
+      <span class="lab">Ticker / Company ID</span>
+      <input class="input mono" value="US_AAPL" />
+    </div>
+    <div class="field">
+      <span class="lab">PER ≤</span>
+      <input class="input mono" value="20.00" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <span class="lab">Sector</span>
+      <select class="select"><option>Technology</option></select>
+    </div>
+    <div class="field">
+      <span class="lab">Period</span>
+      <div class="seg">
+        <button class="on">通期</button>
+        <button>四半期</button>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <span class="lab">FCF Yield ≥</span>
+    <input class="input mono error" value="not a number" />
+    <span class="help err">数値またはサフィックス (k, M, B) を入力してください。</span>
+  </div>
+  <div style="display:flex; gap:18px;">
+    <span class="check on"><span class="box"></span>米国株 (SEC)</span>
+    <span class="check on"><span class="box"></span>日本株 (EDINET)</span>
+    <span class="check"><span class="box"></span>FCF利回り計算</span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["銘柄"] %}
+{% block title %}銘柄検索{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>銘柄検索</h1>
+</div>
+<section class="panel">
+    <div class="panel__body stack">
+        <input class="input" type="search" name="q" placeholder="ティッカー / 企業名"
+               data-stock-search data-search-url="/stocks/search/results">
+        <div id="search-results"></div>
+    </div>
+</section>
+{% endblock %}

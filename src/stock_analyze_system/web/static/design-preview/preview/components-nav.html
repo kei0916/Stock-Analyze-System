@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Tabs + Nav</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:20px; width:700px; box-sizing:border-box; background:var(--bg); display:flex; flex-direction:column; gap:18px; }
+  .label { font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3); margin-bottom:8px; }
+  .tabs { display:flex; gap:0; border-bottom:1px solid var(--border); }
+  .tab { font: 500 13px var(--font-sans); padding: 10px 16px; color: var(--fg-2); cursor:pointer; border-bottom: 2px solid transparent; margin-bottom:-1px; }
+  .tab.on { color: var(--fg-1); border-bottom-color: var(--accent); }
+  .tab:hover:not(.on) { color: var(--fg-1); }
+  .nav { display:flex; flex-direction:column; gap:2px; padding:8px; background: var(--surface); border:1px solid var(--border); border-radius:8px; width:220px; }
+  .nav a { display:flex; align-items:center; gap:10px; padding: 7px 10px; border-radius:5px; color: var(--fg-2); font-size:13px; }
+  .nav a.on { background: var(--surface-2); color: var(--fg-1); }
+  .nav a:hover:not(.on) { background: var(--surface-2); color: var(--fg-1); }
+  .nav a svg { width:15px; height:15px; stroke: currentColor; fill: none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .row { display:flex; gap:24px; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="label">Tabs</div>
+    <div class="tabs">
+      <span class="tab on">財務</span>
+      <span class="tab">バリュエーション</span>
+      <span class="tab">指標</span>
+      <span class="tab">分析</span>
+      <span class="tab">ファイリング</span>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <div class="label">Side nav</div>
+      <nav class="nav">
+        <a class="on"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>ダッシュボード</a>
+        <a><svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>銘柄検索</a>
+        <a><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>ウォッチリスト</a>
+        <a><svg viewBox="0 0 24 24"><path d="M3 6h18M7 12h10M11 18h2"/></svg>スクリーニング</a>
+        <a><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>分析ターゲット</a>
+        <a><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>ジョブ</a>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

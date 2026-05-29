@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["ウォッチリスト", watchlist.name] %}
+{% block title %}{{ watchlist.name }} — ウォッチリスト{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>{{ watchlist.name }}</h1>
+        {% if watchlist.description %}<div class="page-header__meta">{{ watchlist.description }}</div>{% endif %}
+    </div>
+</div>
+
+<section class="panel">
+    <ul class="search-results">
+        {% for item in items %}
+        <li class="flex flex--between flex--center" style="padding: var(--space-3); border-bottom: 1px solid var(--border);">
+            <div>
+                <a href="/stocks/{{ item.company_id }}" class="search-results__title">{{ item.company_id }}</a>
+                {% if item.status %}<span class="muted" style="margin-left: var(--space-2);">{{ item.status }}</span>{% endif %}
+                {% if item.investment_thesis %}<p class="muted" style="margin-top: var(--space-1);">{{ item.investment_thesis }}</p>{% endif %}
+            </div>
+        </li>
+        {% else %}
+        <li><p class="empty-state">アイテムがありません。</p></li>
+        {% endfor %}
+    </ul>
+</section>
+
+<p style="margin-top: var(--space-4);">
+    <a href="/watchlists" class="muted">← 一覧に戻る</a>
+</p>
+{% endblock %}

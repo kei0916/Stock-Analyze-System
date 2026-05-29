@@ -1,0 +1,51 @@
+revenue:
+  - ifrs-full:Revenue
+  - ifrs-full:RevenueFromContractsWithCustomers
+operating_income:
+  - ifrs-full:ProfitLossFromOperatingActivities
+net_income:
+  - ifrs-full:ProfitLossAttributableToOwnersOfParent
+  - ifrs-full:ProfitLoss
+total_assets:
+  - ifrs-full:Assets
+equity:
+  - ifrs-full:EquityAttributableToOwnersOfParent
+  - ifrs-full:Equity
+current_assets:
+  - ifrs-full:CurrentAssets
+current_liabilities:
+  - ifrs-full:CurrentLiabilities
+total_debt:
+  - ifrs-full:LongtermBorrowings
+  - ifrs-full:ShorttermBorrowings
+  - ifrs-full:CurrentPortionOfLongtermBorrowings
+cash:
+  - ifrs-full:CashAndCashEquivalents
+inventory:
+  - ifrs-full:Inventories
+cogs:
+  - ifrs-full:CostOfSales
+operating_cf:
+  - ifrs-full:CashFlowsFromUsedInOperatingActivities
+capex:
+  - ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities
+  - ifrs-full:PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities
+ebitda: []
+eps:
+  - ifrs-full:DilutedEarningsLossPerShare
+  - ifrs-full:BasicEarningsLossPerShare
+dps:
+  - ifrs-full:DividendsRecognisedAsDistributionsToOwnersPerShare
+  - ifrs-full:DividendsPaidOrdinarySharesPerShare
+tax_expense:
+  - ifrs-full:IncomeTaxExpenseContinuingOperations
+income_before_tax:
+  - ifrs-full:ProfitLossBeforeTax
+shares_outstanding:
+  - ifrs-full:WeightedAverageShares
+  - ifrs-full:AdjustedWeightedAverageShares
+  - ifrs-full:NumberOfSharesIssuedAndFullyPaid
+dividends_paid:
+  - ifrs-full:DividendsPaidClassifiedAsFinancingActivities
+  - ifrs-full:DividendsPaid
+share_repurchases: []

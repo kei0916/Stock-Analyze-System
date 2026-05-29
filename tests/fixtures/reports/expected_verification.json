@@ -1,0 +1,33 @@
+{
+  "company_id": "US_AAPL",
+  "filing_id": 42,
+  "doc_name": "10-K_2024_TEST",
+  "timestamp": "REDACTED",
+  "node_count": 123,
+  "phases": [
+    {
+      "mode": "sampling",
+      "accuracy": 0.95,
+      "checked_count": 20,
+      "correct_count": 19,
+      "incorrect_count": 1,
+      "items": [
+        {
+          "title": "売上高",
+          "page_number": 42,
+          "answer": "correct",
+          "thinking": "matched financial statement",
+          "page_text_snippet": "売上高は前年比..."
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "accuracy": 1.0,
+      "checked_count": 100,
+      "correct_count": 100,
+      "incorrect_count": 0,
+      "items": []
+    }
+  ]
+}

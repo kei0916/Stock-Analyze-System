@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<title>Brand colors</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin:0; padding:20px; width:700px; box-sizing:border-box; background:var(--bg); }
+  .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+  .swatch { display:flex; flex-direction:column; gap:6px; }
+  .chip { height:64px; border-radius:6px; border:1px solid var(--border); }
+  .name { font-size:12px; font-weight:600; color:var(--fg-1); display:flex; justify-content:space-between; align-items:baseline; gap:6px; }
+  .name span { font-family:var(--font-mono); font-size:10px; color:var(--fg-3); font-weight:500; }
+  .hex { font-family:var(--font-mono); font-size:11px; color:var(--fg-2); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#0B0D10"></div><div class="name">Canvas <span>--bg</span></div><div class="hex">#0B0D10</div></div>
+    <div class="swatch"><div class="chip" style="background:#111418"></div><div class="name">Surface <span>--surface</span></div><div class="hex">#111418</div></div>
+    <div class="swatch"><div class="chip" style="background:#171B21"></div><div class="name">Surface 2 <span>--surface-2</span></div><div class="hex">#171B21</div></div>
+    <div class="swatch"><div class="chip" style="background:#1D2229"></div><div class="name">Surface 3 <span>--surface-3</span></div><div class="hex">#1D2229</div></div>
+
+    <div class="swatch"><div class="chip" style="background:#F2F4F7"></div><div class="name">FG 1 <span>--fg-1</span></div><div class="hex">#F2F4F7</div></div>
+    <div class="swatch"><div class="chip" style="background:#A1A6AE"></div><div class="name">FG 2 <span>--fg-2</span></div><div class="hex">#A1A6AE</div></div>
+    <div class="swatch"><div class="chip" style="background:#5C636E"></div><div class="name">FG 3 <span>--fg-3</span></div><div class="hex">#5C636E</div></div>
+    <div class="swatch"><div class="chip" style="background:#22272F"></div><div class="name">Border <span>--border</span></div><div class="hex">#22272F</div></div>
+  </div>
+</body>
+</html>

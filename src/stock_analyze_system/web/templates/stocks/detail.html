@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% set breadcrumbs = ["銘柄", company.name] %}
+{% from "_macros.html" import icon %}
+{% block title %}{{ company.name }} — {{ company.ticker or company.security_code }}{% endblock %}
+{% block content %}
+<div data-tabs data-default-tab="financial" data-company-id="{{ company.id }}" data-detail-kpis>
+    <header class="stock-header">
+        <div>
+            <div class="stock-header__meta">
+                <span class="badge badge--mono">{{ company.market }}</span>
+                <span class="stock-header__id">{{ company.id }}</span>
+            </div>
+            <h1 class="stock-header__title">
+                {{ company.name }}
+                {% if company.ticker or company.security_code %}
+                <span class="stock-header__title-en">· {{ company.ticker or company.security_code }}</span>
+                {% endif %}
+            </h1>
+        </div>
+        <div class="page-header__actions">
+            <a class="btn" href="/jobs">{{ icon("refresh", 14) }} ジョブ</a>
+        </div>
+    </header>
+
+    <div class="kpi-grid kpi-grid--5" style="margin-top: var(--space-4);">
+        {% for k in ["per", "pbr", "ev_ebitda", "psr", "fcf_yield"] %}
+        {% set labels = {"per": "PER", "pbr": "PBR", "ev_ebitda": "EV/EBITDA", "psr": "PSR", "fcf_yield": "FCF Yield"} %}
+        <div class="kpi-tile">
+            <span class="kpi-tile__label">{{ labels[k] }}</span>
+            <div class="kpi-tile__value" data-kpi="{{ k }}">—</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <nav class="tabs" style="margin-top: var(--space-5);">
+        {% set tabs = [
+            ("financial", "財務"),
+            ("valuation", "バリュエーション"),
+            ("analysis", "分析"),
+            ("filings", "ファイリング"),
+        ] %}
+        {% for key, label in tabs %}
+        <button type="button" class="tab" data-tab-target="{{ key }}">{{ label }}</button>
+        {% endfor %}
+    </nav>
+
+    <div data-tab-panel="financial" class="stack stack--lg" style="margin-top: var(--space-4);">
+        {% include "stocks/_tab_financial.html" %}
+    </div>
+    <div data-tab-panel="valuation" hidden style="margin-top: var(--space-4);">
+        {% include "stocks/_tab_valuation.html" %}
+    </div>
+    <div data-tab-panel="analysis" hidden style="margin-top: var(--space-4);">
+        {% include "stocks/_tab_analysis.html" %}
+    </div>
+    <div data-tab-panel="filings" hidden style="margin-top: var(--space-4);">
+        {% include "stocks/_tab_filings.html" %}
+    </div>
+</div>
+{% endblock %}
